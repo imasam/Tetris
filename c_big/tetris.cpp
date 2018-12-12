@@ -1,23 +1,17 @@
-// ÓÎÏ·Ãû³Æ£º¶íÂŞË¹·½¿é
-// ±àÒë»·¾³£ºVisual Studio 2015 + EasyX£¨Ìá¹©graphics.hÍ·ÎÄ¼ş£©
-// ×÷Õß£º¼ÆËã»úÑ§Ôº 2015¼¶2°à ºúÕÜ 2014301550147
-// Ô´ÎÄ¼ş
-
-
 #include<graphics.h>
 #include<conio.h>
 #include<time.h>
 #include<math.h>
-#include"tetris.h"	// ÓÎÏ·Í·ÎÄ¼ş
+#include"tetris.h"	// æ¸¸æˆå¤´æ–‡ä»¶
 
 
-// Ö÷º¯Êı
+// ä¸»å‡½æ•°
 int main(void)
 {
 	Init();
 
 	HWND wnd = GetHWnd();
-	if (MessageBox(wnd, _T("ÏÖÔÚ¿ªÊ¼ÓÎÏ·Âğ£¿"), _T("START GAME!"), MB_YESNO | MB_ICONQUESTION) == IDYES)
+	if (MessageBox(wnd, _T("ç°åœ¨å¼€å§‹æ¸¸æˆå—ï¼Ÿ"), _T("START GAME!"), MB_YESNO | MB_ICONQUESTION) == IDYES)
 	{
 		CMD Cmd;
 		while (true)
@@ -29,58 +23,58 @@ int main(void)
 }
 
 
-// ³õÊ¼»¯½çÃæ
+// åˆå§‹åŒ–ç•Œé¢
 void Init()
 {
-	initgraph(SCRWIDTH, SCRHEIGHT);		// ³õÊ¼»¯Í¼ĞÎÏµÍ³
-	srand((unsigned)time(NULL));		// Ê¹ÓÃÏµÍ³Ê±¼äÉú³ÉËæ»úÊı
-	setbkmode(TRANSPARENT);				// ÉèÖÃÌî³ä±³¾°É«ÎªÍ¸Ã÷
+	initgraph(SCRWIDTH, SCRHEIGHT);		// åˆå§‹åŒ–å›¾å½¢ç³»ç»Ÿ
+	srand((unsigned)time(NULL));		// ä½¿ç”¨ç³»ç»Ÿæ—¶é—´ç”Ÿæˆéšæœºæ•°
+	setbkmode(TRANSPARENT);				// è®¾ç½®å¡«å……èƒŒæ™¯è‰²ä¸ºé€æ˜
 
-	// ÓÎÏ·±êÌâ
-	settextstyle(50, 0, _T("Î¢ÈíÑÅºÚ"));
+	// æ¸¸æˆæ ‡é¢˜
+	settextstyle(50, 0, _T("å¾®è½¯é›…é»‘"));
 	outtextxy(50, 35, _T("Tetris"));
 
-	// ÏÔÊ¾µÃ·Ö
+	// æ˜¾ç¤ºå¾—åˆ†
 	roundrect(25, 120, 170, 200, 18, 18);
 
-	settextstyle(30, 0, _T("Î¢ÈíÑÅºÚ"));
+	settextstyle(30, 0, _T("å¾®è½¯é›…é»‘"));
 	outtextxy(70, 120, _T("score"));
 	outtextxy(35, 140, _T("-------------"));
 
-	// ÏÔÊ¾²Ù×÷ËµÃ÷
+	// æ˜¾ç¤ºæ“ä½œè¯´æ˜
 	roundrect(25, 210, 170, 440, 18, 18);
 
-	settextstyle(20, 0, _T("Î¢ÈíÑÅºÚ"));
-	outtextxy(70, 220, _T("²Ù×÷ËµÃ÷"));
+	settextstyle(20, 0, _T("å¾®è½¯é›…é»‘"));
+	outtextxy(70, 220, _T("æ“ä½œè¯´æ˜"));
 	outtextxy(30, 235, _T("-----------------------"));
-	outtextxy(35, 260, _T("W£ºË³Ê±ÕëĞı×ª"));
-	outtextxy(35, 280, _T("A£ºÏò×óÒÆ¶¯"));
-	outtextxy(35, 300, _T("S£º¼ÓËÙÏÂÒÆ"));
-	outtextxy(35, 320, _T("D£ºÏòÓÒÒÆ¶¯"));
-	outtextxy(35, 340, _T("¿Õ¸ñ£ºÖ±½Óµ½´ïµ×²¿"));
-	outtextxy(35, 380, _T("Q£ºÔİÍ£ÓÎÏ·"));
-	outtextxy(35, 400, _T("ESC£ºÍË³öÓÎÏ·"));
+	outtextxy(35, 260, _T("Wï¼šé¡ºæ—¶é’ˆæ—‹è½¬"));
+	outtextxy(35, 280, _T("Aï¼šå‘å·¦ç§»åŠ¨"));
+	outtextxy(35, 300, _T("Sï¼šåŠ é€Ÿä¸‹ç§»"));
+	outtextxy(35, 320, _T("Dï¼šå‘å³ç§»åŠ¨"));
+	outtextxy(35, 340, _T("ç©ºæ ¼ï¼šç›´æ¥åˆ°è¾¾åº•éƒ¨"));
+	outtextxy(35, 380, _T("Qï¼šæš‚åœæ¸¸æˆ"));
+	outtextxy(35, 400, _T("ESCï¼šé€€å‡ºæ¸¸æˆ"));
 
 	//Face(SAD);
 
-	setorigin(200, 20);		// Éè¶¨×ø±êÔ­µã
+	setorigin(200, 20);		// è®¾å®šåæ ‡åŸç‚¹
 
-	//	»æÖÆÓÎÏ·ÇøÓò
-	rectangle(-1, -1, WIDTH * UNIT, HEIGHT * UNIT);									// ¸ÃÇøÓòÎªÖ÷ÓÎÏ·Çø
-	roundrect((WIDTH + 1) * UNIT - 1, -1, (WIDTH + 5) * UNIT, 4 * UNIT, 3, 3);		// ¸ÃÇøÓòÌáÊ¾ÏÂÒ»·½¿é
+	//	ç»˜åˆ¶æ¸¸æˆåŒºåŸŸ
+	rectangle(-1, -1, WIDTH * UNIT, HEIGHT * UNIT);									// è¯¥åŒºåŸŸä¸ºä¸»æ¸¸æˆåŒº
+	roundrect((WIDTH + 1) * UNIT - 1, -1, (WIDTH + 5) * UNIT, 4 * UNIT, 3, 3);		// è¯¥åŒºåŸŸæç¤ºä¸‹ä¸€æ–¹å—
 
-	NewGame();	// ´´½¨ĞÂÓÎÏ·
+	NewGame();	// åˆ›å»ºæ–°æ¸¸æˆ
 }
 
 
-// »æÖÆÔ²Á³
-// ²ÎÊı£º
-//		happy£ºÔ²Á³±íÇé
+// ç»˜åˆ¶åœ†è„¸
+// å‚æ•°ï¼š
+//		happyï¼šåœ†è„¸è¡¨æƒ…
 /*
 void Face(bool happy)
 {
 
-// ÉèÖÃÔ²Á³µÄÔ²ĞÄ
+// è®¾ç½®åœ†è„¸çš„åœ†å¿ƒ
 int x = (WIDTH - 2)*UNIT;
 int y = (HEIGHT - 10) / 2 * UNIT;
 
@@ -88,59 +82,59 @@ int y = (HEIGHT - 10) / 2 * UNIT;
 setcolor(BLACK);
 fillcircle(x, y, 24);
 
-// Á³
+// è„¸
 setcolor(YELLOW);
 setfillcolor(0x00FFFF);
 fillcircle(x, y, 24);
 
-// ×ì
+// å˜´
 setcolor(RED);
-if (happy)		// Ğ¦Á³
+if (happy)		// ç¬‘è„¸
 arc(x - 16, y - 16, x + 16, y + 16, (210 * PI / 180), (330 * PI / 180));
-else			// ¿ŞÁ³
+else			// å“­è„¸
 arc(x - 16, y - 16 + 24, x + 16, y + 16 + 24, (30 * PI / 180), (150 * PI / 180));
 
-// ÑÛ¾¦
+// çœ¼ç›
 setcolor(BLUE);
 setfillcolor(CYAN);
 fillcircle(x - 6, y - 4, 2);
 fillcircle(x + 6, y - 4, 2);
 
-graphdefaults();	// ÖØÖÃ»æÍ¼ÉèÖÃ
+graphdefaults();	// é‡ç½®ç»˜å›¾è®¾ç½®
 }
 */
 
 
-// ´´½¨ĞÂÓÎÏ·
+// åˆ›å»ºæ–°æ¸¸æˆ
 void NewGame()
 {
-	// Çå¿ÕÓÎÏ·ÇøÓò
-	setfillcolor(BLACK);										// ÉèÖÃÌî³äÑÕÉ«ÎªºÚÉ«
-	solidrectangle(0, 0, WIDTH * UNIT - 1, HEIGHT * UNIT - 1);	// ÒÔ¾ØĞÎÌî³äÓÎÏ·ÇøÓò
-	ZeroMemory(GameArea, WIDTH * HEIGHT);						// Çå¿Õ¸ÃÇøÓòÄÚ´æ
+	// æ¸…ç©ºæ¸¸æˆåŒºåŸŸ
+	setfillcolor(BLACK);										// è®¾ç½®å¡«å……é¢œè‰²ä¸ºé»‘è‰²
+	solidrectangle(0, 0, WIDTH * UNIT - 1, HEIGHT * UNIT - 1);	// ä»¥çŸ©å½¢å¡«å……æ¸¸æˆåŒºåŸŸ
+	ZeroMemory(GameArea, WIDTH * HEIGHT);						// æ¸…ç©ºè¯¥åŒºåŸŸå†…å­˜
 
-																// Éú³ÉÏÂÒ»·½¿éµÄ²ÎÊı
-	NextBlock.type = rand() % 7;	// Ëæ»úÈ·¶¨ÏÂÒ»·½¿éµÄĞÎ×´
-	NextBlock.ang = rand() % 4;		// Ëæ»úÈ·¶¨ÏÂÒ»·½¿éµÄĞı×ª×´Ì¬
+																// ç”Ÿæˆä¸‹ä¸€æ–¹å—çš„å‚æ•°
+	NextBlock.type = rand() % 7;	// éšæœºç¡®å®šä¸‹ä¸€æ–¹å—çš„å½¢çŠ¶
+	NextBlock.ang = rand() % 4;		// éšæœºç¡®å®šä¸‹ä¸€æ–¹å—çš„æ—‹è½¬çŠ¶æ€
 	NextBlock.x = WIDTH + 1;		//
-	NextBlock.y = HEIGHT - 1;		// ½«¸Ã²ÎÊıµÄ·½¿éÏÔÊ¾ÔÚÓÒ²àÌáÊ¾ÇøÓò
+	NextBlock.y = HEIGHT - 1;		// å°†è¯¥å‚æ•°çš„æ–¹å—æ˜¾ç¤ºåœ¨å³ä¾§æç¤ºåŒºåŸŸ
 
-	delta_t = 500;	// ÉèÖÃ×Ô¶¯ÏÂÂä¼ä¸ôÊ±¼ä
+	delta_t = 500;	// è®¾ç½®è‡ªåŠ¨ä¸‹è½é—´éš”æ—¶é—´
 
-					// ÏÔÊ¾³õÊ¼¼Æ·ÖÎª0
+					// æ˜¾ç¤ºåˆå§‹è®¡åˆ†ä¸º0
 	score -= 1000;
 	ScorePrint();
 
-	NewBlock();		// Éú³ÉĞÂ·½¿é
+	NewBlock();		// ç”Ÿæˆæ–°æ–¹å—
 }
 
 
-// »ñÈ¡¼üÅÌ¿ØÖÆÃüÁî
+// è·å–é”®ç›˜æ§åˆ¶å‘½ä»¤
 CMD GetCmd()
 {
 	while (true)
 	{
-		// ¹æ¶¨Ê±¼äÄÚÎ´½øĞĞÓĞĞ§²Ù×÷£¬×Ô¶¯ÏÂÂäÒ»²½
+		// è§„å®šæ—¶é—´å†…æœªè¿›è¡Œæœ‰æ•ˆæ“ä½œï¼Œè‡ªåŠ¨ä¸‹è½ä¸€æ­¥
 		DWORD newtime = GetTickCount();
 		if (newtime - oldtime >= delta_t)
 		{
@@ -148,7 +142,7 @@ CMD GetCmd()
 			return CMD_DOWN;
 		}
 
-		// ÈôÊÕµ½ÓĞĞ§²Ù×÷£¬·µ»Ø¶ÔÓ¦ÃüÁî
+		// è‹¥æ”¶åˆ°æœ‰æ•ˆæ“ä½œï¼Œè¿”å›å¯¹åº”å‘½ä»¤
 		if (_kbhit())
 		{
 			switch (_getch())
@@ -171,9 +165,9 @@ CMD GetCmd()
 }
 
 
-// ½«¼üÅÌÖ¸Áî´«µİÎªº¯Êı
-// ²ÎÊı£º
-//		_cmd£º¼üÅÌÊäÈë¶ÔÓ¦µÄ²Ù×÷
+// å°†é”®ç›˜æŒ‡ä»¤ä¼ é€’ä¸ºå‡½æ•°
+// å‚æ•°ï¼š
+//		_cmdï¼šé”®ç›˜è¾“å…¥å¯¹åº”çš„æ“ä½œ
 void TransCmd(CMD _cmd)
 {
 	switch (_cmd)
@@ -189,17 +183,17 @@ void TransCmd(CMD _cmd)
 }
 
 
-// Éú³ÉĞÂ·½¿é²ÎÊı
+// ç”Ÿæˆæ–°æ–¹å—å‚æ•°
 void NewBlock()
 {
-	CurrentBlock.type = NextBlock.type;		// ÉÏÒ»¸öĞÂ·½¿éĞÎ×´±äÎªÕıÏÂÂä·½¿éĞÎ×´
-	NextBlock.type = rand() % 7;			// Ëæ»úÉú³ÉĞÂµÄÏÂÒ»·½¿éĞÎ×´
-	CurrentBlock.ang = NextBlock.ang;		// ÉÏÒ»¸öĞÂ·½¿éĞı×ª×´Ì¬±äÎªÕıÏÂÂä·½¿éĞı×ª×´Ì¬
-	NextBlock.type = rand() % 4;			// Ëæ»úÉú³ÉĞÂµÄÏÂÒ»·½¿éĞı×ª×´Ì¬
+	CurrentBlock.type = NextBlock.type;		// ä¸Šä¸€ä¸ªæ–°æ–¹å—å½¢çŠ¶å˜ä¸ºæ­£ä¸‹è½æ–¹å—å½¢çŠ¶
+	NextBlock.type = rand() % 7;			// éšæœºç”Ÿæˆæ–°çš„ä¸‹ä¸€æ–¹å—å½¢çŠ¶
+	CurrentBlock.ang = NextBlock.ang;		// ä¸Šä¸€ä¸ªæ–°æ–¹å—æ—‹è½¬çŠ¶æ€å˜ä¸ºæ­£ä¸‹è½æ–¹å—æ—‹è½¬çŠ¶æ€
+	NextBlock.type = rand() % 4;			// éšæœºç”Ÿæˆæ–°çš„ä¸‹ä¸€æ–¹å—æ—‹è½¬çŠ¶æ€
 	CurrentBlock.x = (WIDTH - 4) / 2;
 	CurrentBlock.y = HEIGHT + 3;
 
-	// ÏÂÒÆĞÂ·½¿éÖÁÓÎÏ·ÇøÓòµÄÉÏ±ß½ç
+	// ä¸‹ç§»æ–°æ–¹å—è‡³æ¸¸æˆåŒºåŸŸçš„ä¸Šè¾¹ç•Œ
 	WORD temp = Blocks[CurrentBlock.type].ang[CurrentBlock.ang];
 	while ((temp & 0xF) == 0)
 	{
@@ -207,53 +201,53 @@ void NewBlock()
 		temp >>= 4;
 	}
 
-	DrawBlock(CurrentBlock, DRAW_SHOW);	// »æÖÆĞÂ·½¿é
+	DrawBlock(CurrentBlock, DRAW_SHOW);	// ç»˜åˆ¶æ–°æ–¹å—
 
-										// »æÖÆÏÂÒ»¸ö·½¿é
+										// ç»˜åˆ¶ä¸‹ä¸€ä¸ªæ–¹å—
 	setfillcolor(BLACK);														// 
-	solidrectangle((WIDTH + 1)* UNIT, 0, (WIDTH + 5)* UNIT - 1, 4 * UNIT - 1);	// ÒÔºÚÉ«Ìî³äÓÒ²àÌáÊ¾ÇøÓò
+	solidrectangle((WIDTH + 1)* UNIT, 0, (WIDTH + 5)* UNIT - 1, 4 * UNIT - 1);	// ä»¥é»‘è‰²å¡«å……å³ä¾§æç¤ºåŒºåŸŸ
 	DrawBlock(NextBlock, DRAW_SHOW);
 
-	//oldtime = GetTickCount();													// ¼ÆÊ±Æ÷ÅĞ¶Ï×Ô¶¯ÏÂÂä
+	//oldtime = GetTickCount();													// è®¡æ—¶å™¨åˆ¤æ–­è‡ªåŠ¨ä¸‹è½
 }
 
 
-// »æÖÆµ¥Î»Õı·½ĞÎ
-// ²ÎÊı£º
-//		x£¬y£ºµ¥Î»Õı·½ĞÎÎ»ÖÃºá×İ×ø±ê
-//		_color£ºµ¥Î»Õı·½ĞÎÑÕÉ«
-//		_draw£ºµ¥Î»Õı·½ĞÎ»æÖÆ·½·¨
+// ç»˜åˆ¶å•ä½æ­£æ–¹å½¢
+// å‚æ•°ï¼š
+//		xï¼Œyï¼šå•ä½æ­£æ–¹å½¢ä½ç½®æ¨ªçºµåæ ‡
+//		_colorï¼šå•ä½æ­£æ–¹å½¢é¢œè‰²
+//		_drawï¼šå•ä½æ­£æ–¹å½¢ç»˜åˆ¶æ–¹æ³•
 void DrawUnitBlock(int x, int y, COLORREF _color, DRAW _draw)
 {
-	// ¼ÆËãËÄ¸ö±ß½çµÄ×ø±ê
+	// è®¡ç®—å››ä¸ªè¾¹ç•Œçš„åæ ‡
 	int left = x * UNIT;
 	int right = (x + 1) * UNIT - 1;
 	int top = (HEIGHT - 1 - y) * UNIT;
 	int bottom = (HEIGHT - y) * UNIT - 1;
 
-	// »æÖÆµ¥Î»Õı·½ĞÎ
+	// ç»˜åˆ¶å•ä½æ­£æ–¹å½¢
 	switch (_draw)
 	{
-		// »æÖÆµ¥Î»Õı·½ĞÎ
+		// ç»˜åˆ¶å•ä½æ­£æ–¹å½¢
 	case DRAW_SHOW:
 		setlinecolor(0x006060);
-		roundrect(left + 1, top + 1, right - 1, bottom - 1, 5, 5);	// µ¥Î»Õı·½ĞÎÍâµÚ¶ş²ãÏß¿ò
+		roundrect(left + 1, top + 1, right - 1, bottom - 1, 5, 5);	// å•ä½æ­£æ–¹å½¢å¤–ç¬¬äºŒå±‚çº¿æ¡†
 		setlinecolor(0x003030);
-		roundrect(left, top, right, bottom, 8, 8);					// µ¥Î»Õı·½ĞÎÍâµÚÒ»²ãÏß¿ò
+		roundrect(left, top, right, bottom, 8, 8);					// å•ä½æ­£æ–¹å½¢å¤–ç¬¬ä¸€å±‚çº¿æ¡†
 		setfillcolor(_color);
 		setlinecolor(LIGHTGRAY);
-		fillrectangle(left + 2, top + 2, right - 2, bottom - 2);	// µ¥Î»Õı·½ĞÎ
+		fillrectangle(left + 2, top + 2, right - 2, bottom - 2);	// å•ä½æ­£æ–¹å½¢
 		break;
 
-		// Çå³ıµ¥Î»Õı·½ĞÎ
+		// æ¸…é™¤å•ä½æ­£æ–¹å½¢
 	case DRAW_CLEAR:
 		setfillcolor(BLACK);																				// 
-		solidrectangle(x * UNIT, (HEIGHT - y - 1) * UNIT, (x + 1) * UNIT - 1, (HEIGHT - y) * UNIT - 1);		// ÒÔºÚÉ«Ìî³ä×÷ÎªÏû³ı
+		solidrectangle(x * UNIT, (HEIGHT - y - 1) * UNIT, (x + 1) * UNIT - 1, (HEIGHT - y) * UNIT - 1);		// ä»¥é»‘è‰²å¡«å……ä½œä¸ºæ¶ˆé™¤
 		break;
 
-		// ¹Ì¶¨µ¥Î»Õı·½ĞÎ
+		// å›ºå®šå•ä½æ­£æ–¹å½¢
 	case DRAW_FIX:
-		setfillcolor(RGB(GetRValue(_color) * 0.7, GetGValue(_color) * 0.7, GetBValue(_color) * 0.7));	// ¹Ì¶¨ºóÑÕÉ«±ä°µÎªÔ­ÏÈµÄ70%ÁÁ¶È
+		setfillcolor(RGB(GetRValue(_color) * 0.7, GetGValue(_color) * 0.7, GetBValue(_color) * 0.7));	// å›ºå®šåé¢œè‰²å˜æš—ä¸ºåŸå…ˆçš„70%äº®åº¦
 		setlinecolor(DARKGRAY);
 		fillrectangle(left + 1, top + 1, right - 1, bottom - 1);
 		break;
@@ -261,16 +255,16 @@ void DrawUnitBlock(int x, int y, COLORREF _color, DRAW _draw)
 }
 
 
-// »æÖÆĞÂ·½¿é
-// ²ÎÊı£º
-//		_block£º·½¿éµÄ²ÎÊıĞÅÏ¢
-//		_draw£º·½¿é»æÖÆ·½·¨
+// ç»˜åˆ¶æ–°æ–¹å—
+// å‚æ•°ï¼š
+//		_blockï¼šæ–¹å—çš„å‚æ•°ä¿¡æ¯
+//		_drawï¼šæ–¹å—ç»˜åˆ¶æ–¹æ³•
 void DrawBlock(BLOCKINFO _block, DRAW _draw)
 {
 	WORD temp = Blocks[_block.type].ang[_block.ang];
 	int x, y, i;
 
-	// ¶Ô4 * 4¾ØÕóÖğ¸öÔªËØÅĞ¶Ï¸ÃµãÊÇ·ñĞèÒª»æÖÆµ¥Î»Õı·½ĞÎ
+	// å¯¹4 * 4çŸ©é˜µé€ä¸ªå…ƒç´ åˆ¤æ–­è¯¥ç‚¹æ˜¯å¦éœ€è¦ç»˜åˆ¶å•ä½æ­£æ–¹å½¢
 	for (i = 0; i < 16; i++, temp <<= 1)			
 		if (temp & 0x8000)
 		{
@@ -282,36 +276,36 @@ void DrawBlock(BLOCKINFO _block, DRAW _draw)
 }
 
 
-// ¼ì²é·½¿éÊÇ·ñ¿ÉÒÔÂäÔÚµ±Ç°Î»ÖÃ
-// ²ÎÊı£º
-//		_block£º·½¿éµÄ²ÎÊıĞÅÏ¢
+// æ£€æŸ¥æ–¹å—æ˜¯å¦å¯ä»¥è½åœ¨å½“å‰ä½ç½®
+// å‚æ•°ï¼š
+//		_blockï¼šæ–¹å—çš„å‚æ•°ä¿¡æ¯
 bool Check(BLOCKINFO _block)
 {
 	WORD b = Blocks[_block.type].ang[_block.ang];
 	int x, y, i;
 
-	// ¶Ô4 * 4¾ØÕóÖğ¸öÔªËØÅĞ¶Ï¸ÃµãÊÇ·ñĞèÒª»æÖÆµ¥Î»Õı·½ĞÎ
+	// å¯¹4 * 4çŸ©é˜µé€ä¸ªå…ƒç´ åˆ¤æ–­è¯¥ç‚¹æ˜¯å¦éœ€è¦ç»˜åˆ¶å•ä½æ­£æ–¹å½¢
 	for (i = 0; i < 16; i++, b <<= 1)
 		if (b & 0x8000)
 		{
 			x = _block.x + i % 4;
 			y = _block.y - i / 4;
 
-			if (((x < 0) || (x >= WIDTH) || (y < 0)) || ((y < HEIGHT) && (GameArea[x][y])))		// ³¬³ö×óÓÒ±ß½ç»ò¸ÃÎ»ÖÃÒÑÓĞ·½¿é´æÔÚÔò²»¿ÉÂäÏÂ
-				return false;		// ²»¿ÉÂäÔÚµ±Ç°Î»ÖÃ 
+			if (((x < 0) || (x >= WIDTH) || (y < 0)) || ((y < HEIGHT) && (GameArea[x][y])))		// è¶…å‡ºå·¦å³è¾¹ç•Œæˆ–è¯¥ä½ç½®å·²æœ‰æ–¹å—å­˜åœ¨åˆ™ä¸å¯è½ä¸‹
+				return false;		// ä¸å¯è½åœ¨å½“å‰ä½ç½® 
 		}
-	return true;					// ¿ÉÒÔÂäÔÚµ±Ç°Î»ÖÃ
+	return true;					// å¯ä»¥è½åœ¨å½“å‰ä½ç½®
 }
 
 
-// ·½¿éË³Ê±ÕëĞı×ª
+// æ–¹å—é¡ºæ—¶é’ˆæ—‹è½¬
 void Revolve()
 {
-	int delta_x;		// xÆ«ÒÆÁ¿
+	int delta_x;		// xåç§»é‡
 	BLOCKINFO temp = CurrentBlock;
 	temp.ang++;
 
-	// ÅĞ¶ÏĞı×ªºóÊÇ·ñ³¬³ö±ß½ç£¬Èô³¬³öÔòÒÆ¶¯dx
+	// åˆ¤æ–­æ—‹è½¬åæ˜¯å¦è¶…å‡ºè¾¹ç•Œï¼Œè‹¥è¶…å‡ºåˆ™ç§»åŠ¨dx
 	if (Check(temp))
 	{
 		delta_x = 0;
@@ -347,75 +341,75 @@ void Revolve()
 	}
 	return;
 
-// Ë³Ê±ÕëĞı×ª²Ù×÷
+// é¡ºæ—¶é’ˆæ—‹è½¬æ“ä½œ
 revolve:		
-	DrawBlock(CurrentBlock, DRAW_CLEAR);	// Çå³ıÔ­À´µÄ·½¿é
-	CurrentBlock.ang++;						// ·½¿é×ª»»ÎªÏÂÒ»×´Ì¬
-	CurrentBlock.x += delta_x;				// ·½¿é×óÓÒÒÆ¶¯±ÜÃâ³¬³ö±ß½ç
-	DrawBlock(CurrentBlock, DRAW_SHOW);		// »æÖÆĞı×ªºóµÄ·½¿é
+	DrawBlock(CurrentBlock, DRAW_CLEAR);	// æ¸…é™¤åŸæ¥çš„æ–¹å—
+	CurrentBlock.ang++;						// æ–¹å—è½¬æ¢ä¸ºä¸‹ä¸€çŠ¶æ€
+	CurrentBlock.x += delta_x;				// æ–¹å—å·¦å³ç§»åŠ¨é¿å…è¶…å‡ºè¾¹ç•Œ
+	DrawBlock(CurrentBlock, DRAW_SHOW);		// ç»˜åˆ¶æ—‹è½¬åçš„æ–¹å—
 }
 
 
-// ·½¿é×óÒÆ
+// æ–¹å—å·¦ç§»
 void Left()
 {
 	/*
 	CurrentBlock.x--;
-	if (Check(CurrentBlock))		// ¼ì²é×óÒÆÒ»²½µÄ·½¿éÄÜ·ñÂäÔÚ¸ÃÎ»ÖÃ
+	if (Check(CurrentBlock))		// æ£€æŸ¥å·¦ç§»ä¸€æ­¥çš„æ–¹å—èƒ½å¦è½åœ¨è¯¥ä½ç½®
 	{
 	CurrentBlock.x++;
-	DrawBlock(CurrentBlock, DRAW_CLEAR);	// Çå³ıÔ­Î»ÖÃµÄ·½¿é
-	CurrentBlock.x--;						// ·½¿é×óÒÆÒ»²½
-	DrawBlock(CurrentBlock);				// »æÖÆÒÆ¶¯ºóµÄ·½¿é
+	DrawBlock(CurrentBlock, DRAW_CLEAR);	// æ¸…é™¤åŸä½ç½®çš„æ–¹å—
+	CurrentBlock.x--;						// æ–¹å—å·¦ç§»ä¸€æ­¥
+	DrawBlock(CurrentBlock);				// ç»˜åˆ¶ç§»åŠ¨åçš„æ–¹å—
 	}
 	*/
 	BLOCKINFO temp = CurrentBlock;
 	temp.x--;
-	if (Check(temp))								// ¼ì²é×óÒÆÒ»²½µÄ·½¿éÄÜ·ñÂäÔÚ¸ÃÎ»ÖÃ
+	if (Check(temp))								// æ£€æŸ¥å·¦ç§»ä¸€æ­¥çš„æ–¹å—èƒ½å¦è½åœ¨è¯¥ä½ç½®
 	{
-		DrawBlock(CurrentBlock, DRAW_CLEAR);		// Çå³ıÔ­Î»ÖÃµÄ·½¿é
-		CurrentBlock.x--;							// ·½¿é×óÒÆÒ»²½
-		DrawBlock(CurrentBlock);					// »æÖÆÒÆ¶¯ºóµÄ·½¿é
+		DrawBlock(CurrentBlock, DRAW_CLEAR);		// æ¸…é™¤åŸä½ç½®çš„æ–¹å—
+		CurrentBlock.x--;							// æ–¹å—å·¦ç§»ä¸€æ­¥
+		DrawBlock(CurrentBlock);					// ç»˜åˆ¶ç§»åŠ¨åçš„æ–¹å—
 	}
 }
 
 
-// ·½¿éÓÒÒÆ
+// æ–¹å—å³ç§»
 void Right()
 {
 	/*
 	CurrentBlock.x++;
-	if (Check(CurrentBlock))		// ¼ì²éÓÒÒÆÒ»²½µÄ·½¿éÄÜ·ñÂäÔÚ¸ÃÎ»ÖÃ
+	if (Check(CurrentBlock))		// æ£€æŸ¥å³ç§»ä¸€æ­¥çš„æ–¹å—èƒ½å¦è½åœ¨è¯¥ä½ç½®
 	{
 	CurrentBlock.x--;
-	DrawBlock(CurrentBlock, DRAW_CLEAR);	// Çå³ıÔ­Î»ÖÃµÄ·½¿é
-	CurrentBlock.x++;						// ·½¿éÓÒÒÆÒ»²½
-	DrawBlock(CurrentBlock);				// »æÖÆÒÆ¶¯ºóµÄ·½¿é
+	DrawBlock(CurrentBlock, DRAW_CLEAR);	// æ¸…é™¤åŸä½ç½®çš„æ–¹å—
+	CurrentBlock.x++;						// æ–¹å—å³ç§»ä¸€æ­¥
+	DrawBlock(CurrentBlock);				// ç»˜åˆ¶ç§»åŠ¨åçš„æ–¹å—
 	}
 	*/
 	BLOCKINFO temp = CurrentBlock;
 	temp.x++;
-	if (Check(temp))								// ¼ì²éÓÒÒÆÒ»²½µÄ·½¿éÄÜ·ñÂäÔÚ¸ÃÎ»ÖÃ
+	if (Check(temp))								// æ£€æŸ¥å³ç§»ä¸€æ­¥çš„æ–¹å—èƒ½å¦è½åœ¨è¯¥ä½ç½®
 	{
-		DrawBlock(CurrentBlock, DRAW_CLEAR);		// Çå³ıÔ­Î»ÖÃµÄ·½¿é
-		CurrentBlock.x++;							// ·½¿éÓÒÒÆÒ»²½
-		DrawBlock(CurrentBlock);					// »æÖÆÒÆ¶¯ºóµÄ·½¿é
+		DrawBlock(CurrentBlock, DRAW_CLEAR);		// æ¸…é™¤åŸä½ç½®çš„æ–¹å—
+		CurrentBlock.x++;							// æ–¹å—å³ç§»ä¸€æ­¥
+		DrawBlock(CurrentBlock);					// ç»˜åˆ¶ç§»åŠ¨åçš„æ–¹å—
 	}
 
 }
 
 
-// ·½¿éÏòÏÂ¼ÓËÙ
+// æ–¹å—å‘ä¸‹åŠ é€Ÿ
 void Down()
 {
 	/*
 	CurrentBlock.y--;
-	if (Check(CurrentBlock))				// ¼ì²éÏÂÒÆÒ»²½µÄ·½¿éÄÜ·ñÂäÔÚ¸ÃÎ»ÖÃ
+	if (Check(CurrentBlock))				// æ£€æŸ¥ä¸‹ç§»ä¸€æ­¥çš„æ–¹å—èƒ½å¦è½åœ¨è¯¥ä½ç½®
 	{
 	CurrentBlock.y++;
-	DrawBlock(CurrentBlock, DRAW_CLEAR);	// Çå³ıÔ­Î»ÖÃµÄ·½¿é
-	CurrentBlock.y--;						// ·½¿éÏÂÒÆÒ»²½
-	DrawBlock(CurrentBlock);				// »æÖÆÒÆ¶¯ºóµÄ·½¿é
+	DrawBlock(CurrentBlock, DRAW_CLEAR);	// æ¸…é™¤åŸä½ç½®çš„æ–¹å—
+	CurrentBlock.y--;						// æ–¹å—ä¸‹ç§»ä¸€æ­¥
+	DrawBlock(CurrentBlock);				// ç»˜åˆ¶ç§»åŠ¨åçš„æ–¹å—
 	}
 	*/
 	BLOCKINFO temp = CurrentBlock;
@@ -427,34 +421,34 @@ void Down()
 		DrawBlock(CurrentBlock, DRAW_SHOW);
 	}
 	else
-		Sink();									// Èô·½¿éÒÑ²»¿É¼ÌĞøÏÂÒÆ£¬Ê¹ÓÃSink()º¯Êı¹Ì¶¨
+		Sink();									// è‹¥æ–¹å—å·²ä¸å¯ç»§ç»­ä¸‹ç§»ï¼Œä½¿ç”¨Sink()å‡½æ•°å›ºå®š
 }
 
 
-// ·½¿éÖ±½Óµ½´ïµ×²¿
+// æ–¹å—ç›´æ¥åˆ°è¾¾åº•éƒ¨
 void Sink()
 {
 	int x, y, i;
 
 	/*
-	// Á¬ĞøÖØ¸´½øĞĞDown()µÄÏÂÒÆ¹¦ÄÜ
+	// è¿ç»­é‡å¤è¿›è¡ŒDown()çš„ä¸‹ç§»åŠŸèƒ½
 	CurrentBlock.y--;
-	if (Check(CurrentBlock))				// ¼ì²éÏÂÒÆÒ»²½µÄ·½¿éÄÜ·ñÂäÔÚ¸ÃÎ»ÖÃ
+	if (Check(CurrentBlock))				// æ£€æŸ¥ä¸‹ç§»ä¸€æ­¥çš„æ–¹å—èƒ½å¦è½åœ¨è¯¥ä½ç½®
 	{
 	CurrentBlock.y++;
-	DrawBlock(CurrentBlock, DRAW_CLEAR);	// Çå³ıÔ­Î»ÖÃµÄ·½¿é
-	CurrentBlock.y--;						// ·½¿éÏÂÒÆÒ»²½
-	DrawBlock(CurrentBlock);				// »æÖÆÒÆ¶¯ºóµÄ·½¿é
+	DrawBlock(CurrentBlock, DRAW_CLEAR);	// æ¸…é™¤åŸä½ç½®çš„æ–¹å—
+	CurrentBlock.y--;						// æ–¹å—ä¸‹ç§»ä¸€æ­¥
+	DrawBlock(CurrentBlock);				// ç»˜åˆ¶ç§»åŠ¨åçš„æ–¹å—
 	}
-	DrawBlock(CurrentBlock, DRAW_FIX);			// ¹Ì¶¨·½¿é
+	DrawBlock(CurrentBlock, DRAW_FIX);			// å›ºå®šæ–¹å—
 	*/
 
-	// Á¬ĞøÏÂÒÆ·½¿é
+	// è¿ç»­ä¸‹ç§»æ–¹å—
 	DrawBlock(CurrentBlock, DRAW_CLEAR);
 	BLOCKINFO temp1 = CurrentBlock;
 	temp1.y--;
 
-	// È·ÈÏ¿ÉÏÂÒÆÊ±ÊµÏÖÁ¬ĞøÏÂÒÆ
+	// ç¡®è®¤å¯ä¸‹ç§»æ—¶å®ç°è¿ç»­ä¸‹ç§»
 	while (Check(temp1))
 	{
 		CurrentBlock.y--;
@@ -466,26 +460,26 @@ void Sink()
 	for (i = 0; i < 16; i++, temp2 <<= 1)
 		if (temp2 & 0x8000)
 		{
-			if (CurrentBlock.y - i / 4 >= HEIGHT)		// ·½¿éµş¼Ó³¬¹ıÉÏ±ßÔµÔòÓÎÏ·½áÊø
+			if (CurrentBlock.y - i / 4 >= HEIGHT)		// æ–¹å—å åŠ è¶…è¿‡ä¸Šè¾¹ç¼˜åˆ™æ¸¸æˆç»“æŸ
 			{
 				GameOver();
 				return;
 			}
 			else
-				GameArea[CurrentBlock.x + i % 4][CurrentBlock.y - i / 4] = 1;	// ±ê¼Ç¸ÃÎ»ÖÃÓĞ·½¿é´æÔÚ
+				GameArea[CurrentBlock.x + i % 4][CurrentBlock.y - i / 4] = 1;	// æ ‡è®°è¯¥ä½ç½®æœ‰æ–¹å—å­˜åœ¨
 		}
 
 	Remove();
 	
-	NewBlock();		// Éú³ÉĞÂ·½¿é
+	NewBlock();		// ç”Ÿæˆæ–°æ–¹å—
 }
  
  
-// Ïû³ıÂúĞĞ
+// æ¶ˆé™¤æ»¡è¡Œ
 void Remove()
 {
 	int x, y, i;
-	byte remove = 0;	// remove±ê¼ÇÊÇ·ñĞèÒªÏû³ı
+	byte remove = 0;	// removeæ ‡è®°æ˜¯å¦éœ€è¦æ¶ˆé™¤
 
 	for (y = CurrentBlock.y; y >= max(CurrentBlock.y - 4, 0); y--)
 	{
@@ -495,7 +489,7 @@ void Remove()
 			if (GameArea[x][y] == 1)
 				i++;
 
-		if (i == WIDTH)		//¸ÃĞĞÌîÂú   
+		if (i == WIDTH)		//è¯¥è¡Œå¡«æ»¡   
 			remove |= (1 << (CurrentBlock.y - y));
 	}
 
@@ -513,10 +507,10 @@ void Remove()
 						GameArea[x][y - 1] = GameArea[x][y];
 						GameArea[x][y] = 0;
 					}
-				getimage(&img, 0, 0, WIDTH*UNIT, (HEIGHT - (CurrentBlock.y - row + 1))*UNIT);	// ±£´æÎ´Ïû³ı²¿·Ö
-				putimage(0, UNIT, &img);														// Êä³öÒÆ¶¯ºóµÄÎ´Ïû³ı²¿·Ö
+				getimage(&img, 0, 0, WIDTH*UNIT, (HEIGHT - (CurrentBlock.y - row + 1))*UNIT);	// ä¿å­˜æœªæ¶ˆé™¤éƒ¨åˆ†
+				putimage(0, UNIT, &img);														// è¾“å‡ºç§»åŠ¨åçš„æœªæ¶ˆé™¤éƒ¨åˆ†
 
-				if (delta_t > 200)																// Ã¿·¢ÉúÒ»´ÎÏû³ı×Ô¶¯ÏÂÂä¼Ó¿ì	
+				if (delta_t > 200)																// æ¯å‘ç”Ÿä¸€æ¬¡æ¶ˆé™¤è‡ªåŠ¨ä¸‹è½åŠ å¿«	
 					delta_t -= 50;
 
 				ScorePrint();
@@ -528,60 +522,60 @@ void Remove()
 }
 
 
-// ¼ÆËãµÃ·Ö
+// è®¡ç®—å¾—åˆ†
 void ScorePrint()
 {
-	// ÉèÖÃµÃ·ÖÇøÓò²ÎÊı
+	// è®¾ç½®å¾—åˆ†åŒºåŸŸå‚æ•°
 	RECT ScoreArea = { 0, 0, SCRWIDTH, 20 };
 	ScoreArea.top = SCRHEIGHT - 330;
 	ScoreArea.bottom = SCRHEIGHT + 120;
 	ScoreArea.left = -850;
 
-	// ²ÁÈ¥ÉÏ´ÎµÃ·Ö
+	// æ“¦å»ä¸Šæ¬¡å¾—åˆ†
 	setcolor(BLACK);
 	_stprintf(sScore, _T("%d"), score);
 	drawtext(sScore, &ScoreArea, DT_CENTER | DT_SINGLELINE);
 
 	score += 1000;
 
-	// ÏÔÊ¾µÃ·Ö
+	// æ˜¾ç¤ºå¾—åˆ†
 	setcolor(WHITE);
 	_stprintf(sScore, _T("%d"), score);
 	drawtext(sScore, &ScoreArea, DT_CENTER | DT_SINGLELINE);
 }
 
 
-// °´ESCÊ±µ¯³öÌáÊ¾¿òÈ·ÈÏ
+// æŒ‰ESCæ—¶å¼¹å‡ºæç¤ºæ¡†ç¡®è®¤
 void Esc()
 {
 	HWND wnd = GetHWnd();
-	if (MessageBox(wnd, _T("È·¶¨ÍË³öÓÎÏ·Âğ£¿"), _T("ÍË³öÓÎÏ·"), MB_OKCANCEL | MB_ICONQUESTION) == IDOK)
+	if (MessageBox(wnd, _T("ç¡®å®šé€€å‡ºæ¸¸æˆå—ï¼Ÿ"), _T("é€€å‡ºæ¸¸æˆ"), MB_OKCANCEL | MB_ICONQUESTION) == IDOK)
 		Quit();
 }
 
 
-// ÔİÍ£ÓÎÏ·
+// æš‚åœæ¸¸æˆ
 void Pause()
 {
 	HWND wnd = GetHWnd();
-	if (MessageBox(wnd, _T("ÓÎÏ·ÒÑÔİÍ£\n¼ÌĞøÓÎÏ·Âğ£¿"), _T("PAUSE"), MB_YESNO | MB_ICONQUESTION) == IDYES);
+	if (MessageBox(wnd, _T("æ¸¸æˆå·²æš‚åœ\nç»§ç»­æ¸¸æˆå—ï¼Ÿ"), _T("PAUSE"), MB_YESNO | MB_ICONQUESTION) == IDYES);
 	else
 		Quit();
 }
 
 
-// ÓÎÏ·½áÊø
+// æ¸¸æˆç»“æŸ
 void GameOver()
 {
 	HWND wnd = GetHWnd();
-	if (MessageBox(wnd, _T("HeyÅóÓÑ,Äã¹ÒÀ²£¡\nÏëÔÙÀ´Ò»¾ÖÂğ£¿"), _T("GAME OVER!"), MB_YESNO | MB_ICONQUESTION) == IDYES)
-		NewGame();		// °´¡°È·¶¨¡±¿ªÊ¼ĞÂÒ»¾ÖÓÎÏ·
+	if (MessageBox(wnd, _T("Heyæœ‹å‹,ä½ æŒ‚å•¦ï¼\næƒ³å†æ¥ä¸€å±€å—ï¼Ÿ"), _T("GAME OVER!"), MB_YESNO | MB_ICONQUESTION) == IDYES)
+		NewGame();		// æŒ‰â€œç¡®å®šâ€å¼€å§‹æ–°ä¸€å±€æ¸¸æˆ
 	else
-		Quit();			// °´¡°È¡Ïû¡±ÍË³öÓÎÏ·
+		Quit();			// æŒ‰â€œå–æ¶ˆâ€é€€å‡ºæ¸¸æˆ
 }
 
 
-// ÍË³öÓÎÏ·
+// é€€å‡ºæ¸¸æˆ
 void Quit()
 {
 	closegraph();
